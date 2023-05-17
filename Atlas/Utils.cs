@@ -31,7 +31,7 @@ namespace Atlas
         public static string ModDirectory()
         {
             // return Path.Combine(GameDirectory(), @"BepInEx\UMM Mods");
-            return Path.Combine(GameDirectory(), @"BepInEx\plugins");
+            return Path.Combine(GameDirectory(), "BepInEx", "plugins");
         }
 
         public static string ModPath()
