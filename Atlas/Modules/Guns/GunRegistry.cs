@@ -14,7 +14,7 @@ namespace Atlas.Modules.Guns
     public class GunRegistry : Module
     {
         private static string SavePath = Path.Combine(PathUtils.ModPath(), "save");
-        internal static List<Weapon> WeaponList = new List<Weapon>();
+        public static List<Weapon> WeaponList = new List<Weapon>();
         internal static Dictionary<string, int> WeaponOwned = new Dictionary<string, int>();
 
         private static List<List<GameObject>> SlotToList;

@@ -65,11 +65,12 @@ namespace Atlas.Modules.Terminal
             Pages.RemoveAt(index);
         }
 
-        public static void RefreshPages()
+        public static void RefreshPages(int changedBy)
         {
+            int pageNumber = 0;
             foreach (Page page in Pages)
             {
-                if (page.IsDefaultPage && Pages.IndexOf(page) != Page)
+                if (page.IsDefaultPage && (Page == pageNumber + changedBy))
                 {
                     page.State.Clear();
 
@@ -82,7 +83,7 @@ namespace Atlas.Modules.Terminal
 
                 foreach (GameObject go in page.Objects)
                 {
-                    if (Pages.IndexOf(page) == Page)
+                    if (pageNumber == Page)
                     {
                         if (page.State.ContainsKey(go))
                         {
@@ -98,6 +99,8 @@ namespace Atlas.Modules.Terminal
                         go.SetActive(false);
                     }
                 }
+
+                pageNumber++;
             }
         }
 
@@ -162,7 +165,7 @@ namespace Atlas.Modules.Terminal
             [HarmonyPostfix]
             public static void RefreshOnEntrance()
             {
-                RefreshPages();
+                RefreshPages(0);
             }
 
             [HarmonyPatch(typeof(ShopButton), nameof(ShopButton.Awake))]
@@ -181,7 +184,7 @@ namespace Atlas.Modules.Terminal
                             {
                                 Page -= 1;
 
-                                RefreshPages();
+                                RefreshPages(-1);
                             }
                         }
                         else
@@ -190,7 +193,7 @@ namespace Atlas.Modules.Terminal
                             {
                                 Page += 1;
 
-                                RefreshPages();
+                                RefreshPages(1);
                             }
                         }
                     });
