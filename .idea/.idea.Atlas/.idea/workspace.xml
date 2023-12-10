@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5fa07bbf-b877-4ae2-baf4-c25d06c90852" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/AtlasLib/Pages/DefaultWeaponPage.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AtlasLib/Pages/Page.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AtlasLib/Pages/PageRegistry.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AtlasLib/Plugin.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AtlasLib/Utils/CoroutineRunner.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AtlasLib/Utils/Inputs.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AtlasLib/Utils/PathUtils.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AtlasLib/Utils/UnityUtils.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AtlasLib/Weapons/Weapon.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AtlasLib/Weapons/WeaponInfo.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AtlasLib/Weapons/WeaponRegistry.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AtlasLib/Weapons/WeaponSelection.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AtlasLib/Weapons/WeaponType.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas.sln" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Atlas.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Atlas.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/AtlasLib.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/BepInEx/0Harmony.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/BepInEx/0Harmony.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/BepInEx/0Harmony20.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/BepInEx/0Harmony20.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/BepInEx/BepInEx.Harmony.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/BepInEx/BepInEx.Harmony.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/BepInEx/BepInEx.Preloader.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/BepInEx/BepInEx.Preloader.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/BepInEx/BepInEx.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/BepInEx/BepInEx.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/BepInEx/HarmonyXInterop.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/BepInEx/HarmonyXInterop.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/BepInEx/Mono.Cecil.Mdb.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/BepInEx/Mono.Cecil.Mdb.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/BepInEx/Mono.Cecil.Pdb.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/BepInEx/Mono.Cecil.Pdb.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/BepInEx/Mono.Cecil.Rocks.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/BepInEx/Mono.Cecil.Rocks.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/BepInEx/Mono.Cecil.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/BepInEx/Mono.Cecil.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/BepInEx/MonoMod.RuntimeDetour.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/BepInEx/MonoMod.RuntimeDetour.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/BepInEx/MonoMod.Utils.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/BepInEx/MonoMod.Utils.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/Assembly-CSharp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/Assembly-CSharp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/Facepunch.Steamworks.Win64.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/Facepunch.Steamworks.Win64.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/Microsoft.CSharp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/Microsoft.CSharp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/Microsoft.Extensions.Logging.Abstractions.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/Microsoft.Extensions.Logging.Abstractions.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/Mono.Security.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/Mono.Security.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/NavMeshComponents.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/NavMeshComponents.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/NewBlood.LegacyInput.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/NewBlood.LegacyInput.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/Newtonsoft.Json.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/Newtonsoft.Json.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/System.ComponentModel.Composition.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/System.ComponentModel.Composition.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/System.Configuration.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/System.Configuration.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/System.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/System.Core.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/System.Data.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/System.Data.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/System.Diagnostics.StackTrace.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/System.Diagnostics.StackTrace.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/System.Drawing.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/System.Drawing.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/System.EnterpriseServices.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/System.EnterpriseServices.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/System.Globalization.Extensions.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/System.Globalization.Extensions.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/System.IO.Compression.FileSystem.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/System.IO.Compression.FileSystem.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/System.IO.Compression.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/System.IO.Compression.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/System.Net.Http.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/System.Net.Http.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/System.Numerics.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/System.Numerics.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/System.Runtime.Serialization.Xml.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/System.Runtime.Serialization.Xml.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/System.Runtime.Serialization.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/System.Runtime.Serialization.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/System.ServiceModel.Internals.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/System.ServiceModel.Internals.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/System.Transactions.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/System.Transactions.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/System.Xml.Linq.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/System.Xml.Linq.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/System.Xml.XPath.XDocument.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/System.Xml.XPath.XDocument.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/System.Xml.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/System.Xml.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/System.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/System.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/TwitchLib.Api.Core.Enums.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/TwitchLib.Api.Core.Enums.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/TwitchLib.Api.Core.Interfaces.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/TwitchLib.Api.Core.Interfaces.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/TwitchLib.Api.Core.Models.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/TwitchLib.Api.Core.Models.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/TwitchLib.Api.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/TwitchLib.Api.Core.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/TwitchLib.Api.Helix.Models.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/TwitchLib.Api.Helix.Models.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/TwitchLib.Api.Helix.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/TwitchLib.Api.Helix.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/TwitchLib.Api.V5.Models.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/TwitchLib.Api.V5.Models.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/TwitchLib.Api.V5.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/TwitchLib.Api.V5.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/TwitchLib.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/TwitchLib.Api.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/TwitchLib.Client.Enums.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/TwitchLib.Client.Enums.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/TwitchLib.Client.Models.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/TwitchLib.Client.Models.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/TwitchLib.Client.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/TwitchLib.Client.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/TwitchLib.Communication.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/TwitchLib.Communication.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/TwitchLib.PubSub.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/TwitchLib.PubSub.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/TwitchLib.Unity.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/TwitchLib.Unity.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/Unity.Analytics.DataPrivacy.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/Unity.Analytics.DataPrivacy.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/Unity.Analytics.StandardEvents.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/Unity.Analytics.StandardEvents.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/Unity.Analytics.StandardEvents.dll.mdb" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/Unity.Analytics.StandardEvents.dll.mdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/Unity.Analytics.Tracker.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/Unity.Analytics.Tracker.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/Unity.Analytics.Tracker.dll.mdb" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/Unity.Analytics.Tracker.dll.mdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/Unity.InputSystem.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/Unity.InputSystem.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/Unity.Polybrush.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/Unity.Polybrush.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/Unity.ProBuilder.KdTree.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/Unity.ProBuilder.KdTree.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/Unity.ProBuilder.Poly2Tri.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/Unity.ProBuilder.Poly2Tri.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/Unity.ProBuilder.Stl.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/Unity.ProBuilder.Stl.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/Unity.ProBuilder.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/Unity.ProBuilder.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/Unity.ProGrids.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/Unity.ProGrids.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/Unity.Recorder.Base.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/Unity.Recorder.Base.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/Unity.Recorder.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/Unity.Recorder.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/Unity.TextMeshPro.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/Unity.TextMeshPro.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/Unity.Timeline.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/Unity.Timeline.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.AIModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.AIModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.ARModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.ARModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.AccessibilityModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.AccessibilityModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.Advertisements.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.Advertisements.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.AndroidJNIModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.AndroidJNIModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.AnimationModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.AnimationModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.AssetBundleModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.AssetBundleModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.AudioModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.AudioModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.ClothModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.ClothModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.ClusterInputModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.ClusterInputModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.ClusterRendererModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.ClusterRendererModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.CoreModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.CoreModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.CrashReportingModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.CrashReportingModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.DSPGraphModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.DSPGraphModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.DirectorModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.DirectorModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.GameCenterModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.GameCenterModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.GridModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.GridModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.HotReloadModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.HotReloadModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.IMGUIModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.IMGUIModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.ImageConversionModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.ImageConversionModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.InputLegacyModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.InputLegacyModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.InputModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.InputModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.JSONSerializeModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.JSONSerializeModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.LocalizationModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.LocalizationModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.Monetization.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.Monetization.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.ParticleSystemModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.ParticleSystemModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.PerformanceReportingModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.PerformanceReportingModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.Physics2DModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.Physics2DModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.PhysicsModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.PhysicsModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.ProfilerModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.ProfilerModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.Purchasing.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.Purchasing.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.ScreenCaptureModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.ScreenCaptureModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.SharedInternalsModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.SharedInternalsModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.SpatialTracking.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.SpatialTracking.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.SpriteMaskModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.SpriteMaskModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.SpriteShapeModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.SpriteShapeModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.StreamingModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.StreamingModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.SubstanceModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.SubstanceModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.SubsystemsModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.SubsystemsModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.TLSModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.TLSModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.TerrainModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.TerrainModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.TerrainPhysicsModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.TerrainPhysicsModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.TextCoreModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.TextCoreModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.TextRenderingModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.TextRenderingModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.TilemapModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.TilemapModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.UI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.UI.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.UIElementsModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.UIElementsModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.UIModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.UIModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.UNETModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.UNETModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.UmbraModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.UmbraModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.UnityAnalyticsModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.UnityAnalyticsModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.UnityConnectModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.UnityConnectModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.UnityTestProtocolModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.UnityTestProtocolModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.UnityWebRequestAudioModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.UnityWebRequestAudioModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.UnityWebRequestModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.UnityWebRequestModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.UnityWebRequestTextureModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.UnityWebRequestTextureModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.UnityWebRequestWWWModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.UnityWebRequestWWWModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.VFXModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.VFXModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.VRModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.VRModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.VehiclesModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.VehiclesModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.VideoModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.VideoModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.WindModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.WindModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.XR.LegacyInputHelpers.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.XR.LegacyInputHelpers.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.XRModule.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.XRModule.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityEngine.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityEngine.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/UnityUIExtensions.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/UnityUIExtensions.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/endel.nativewebsocket.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/endel.nativewebsocket.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/mscorlib.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/mscorlib.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/netstandard.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/netstandard.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/Managed/pcon.unity.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/Managed/pcon.unity.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/UMM.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/UMM.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/nstrip.exe" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/nstrip.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Libs/publicise managed.bat" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Libs/publicise managed.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Modules/Guns/Fist.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Modules/Guns/Gun.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Modules/Guns/GunRegistry.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Modules/Guns/Weapon.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Modules/Module.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Modules/Terminal/Page.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Modules/Terminal/TemplatePage.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Modules/Terminal/TerminalPageRegistry.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Properties/AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AtlasLib/Properties/AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Test/Test.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Test/TestGreen.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas/Utils.cs" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 6
+}]]></component>
+  <component name="ProjectId" id="2ZLiAOGYJrjEUTwZ7PHi9EEip1Z" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\mkols\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\mkols\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\mkols\\AppData\\Local\\Symbols\\src"
+    ]
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5fa07bbf-b877-4ae2-baf4-c25d06c90852" name="Changes" comment="" />
+      <created>1702207615922</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1702207615922</updated>
+      <workItem from="1702207616987" duration="13170000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>
