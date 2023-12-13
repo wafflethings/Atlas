@@ -54,6 +54,13 @@ namespace AtlasLib.Weapons
 
         public static bool CheckOwnership(string id)
         {
+            if (id.StartsWith("weapon."))
+            {
+                throw new Exception("Id starts with 'weapon.'. Don't do that, it gets added automatically");
+            }
+
+            id = "weapon." + id;
+            
             if (!WeaponOwnership.ContainsKey(id))
             {
                 WeaponOwnership.Add(id, 0);
@@ -98,8 +105,21 @@ namespace AtlasLib.Weapons
             {
                 if (weapon.Selection != WeaponSelection.Disabled)
                 {
+                    // i would LOVE to use GunControl.slots, but gunsetter.resetweapons is called in start, before gc.start.
+                    // this means that slots isnt set before this runs initially.
+
+                    List<List<GameObject>> slots = new()
+                    {
+                        __instance.gunc.slot1,
+                        __instance.gunc.slot2,
+                        __instance.gunc.slot3,
+                        __instance.gunc.slot4,
+                        __instance.gunc.slot5,
+                        __instance.gunc.slot6
+                    };
+                    
                     GameObject created = weapon.Create(__instance.transform);
-                    __instance.gunc.slots[weapon.Info.Slot].Add(created);
+                    slots[weapon.Info.Slot].Add(created);
                     created.SetActive(false);
                 }
             }

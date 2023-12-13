@@ -24,7 +24,7 @@ namespace AtlasLib.Pages
         {
             foreach (GameObject pageObject in Objects)
             {
-                pageObject.SetActive(true);
+                pageObject.SetActive(false);
             }
         }
     }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace AtlasLib.Pages
 {
-    public class DefaultWeaponPage : Page
+    internal class DefaultWeaponPage : Page
     {
         private static string[] _page1Content =
         {

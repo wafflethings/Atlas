@@ -15,6 +15,7 @@ namespace AtlasLib.Pages
 
         public static void Initialize()
         {
+            Pages.Add(new DefaultWeaponPage());
             Plugin.Harmony.PatchAll(typeof(PageRegistry));
         }
 
@@ -36,7 +37,7 @@ namespace AtlasLib.Pages
 
             if (changedBy != 0)
             {
-                Pages[CurrentPage + changedBy].DisablePage();
+                Pages[CurrentPage - changedBy].DisablePage();
             }
         }
 
@@ -64,7 +65,7 @@ namespace AtlasLib.Pages
         [HarmonyPostfix]
         public static void ShopStart(ShopZone __instance)
         {
-            if (__instance.gameObject.GetChild("Canvas").GetChild("Weapons") != null)
+            if (__instance.gameObject.GetChild("Canvas")?.GetChild("Weapons") != null)
             {
                 // If this is true, it's a yellow shop (e.g: not a testament)
 
@@ -94,6 +95,11 @@ namespace AtlasLib.Pages
                 foreach (Page page in Pages)
                 {
                     page.CreatePage(__instance.gameObject.GetChild("Canvas/Weapons").transform);
+
+                    if (page.GetType() != typeof(DefaultWeaponPage))
+                    {
+                        page.DisablePage();
+                    }
                 }
             }
         }
