@@ -16,10 +16,7 @@ namespace AtlasLib.Weapons
             return weapon;
         }
         
-        public abstract WeaponInfo Info
-        {
-            get;
-        }
+        public abstract WeaponInfo Info { get; }
         
         public virtual WeaponSelection Selection => Owned ? (WeaponSelection)PrefsManager.Instance.GetInt("weapon." + Info.Id) : WeaponSelection.Disabled;
         public virtual bool Owned => WeaponRegistry.CheckOwnership(Info.Id);

@@ -21,7 +21,7 @@ namespace AtlasLib.Weapons
         public static List<Weapon> Guns = new();
         public static List<Weapon> Fists = new();
 
-        public static void Initialize()
+        internal static void Initialize()
         {
             Plugin.Harmony.PatchAll(typeof(WeaponRegistry));
             LoadData();
@@ -85,21 +85,21 @@ namespace AtlasLib.Weapons
 
         [HarmonyPatch(typeof(GameProgressSaver), nameof(GameProgressSaver.SetSlot))]
         [HarmonyPrefix]
-        public static void SaveOnSlotChange()
+        private static void SaveOnSlotChange()
         {
             SaveData();
         }
 
         [HarmonyPatch(typeof(GameProgressSaver), nameof(GameProgressSaver.SetSlot))]
         [HarmonyPostfix]
-        public static void LoadOnSlotChange()
+        private static void LoadOnSlotChange()
         {
             LoadData();
         }
 
         [HarmonyPatch(typeof(GunSetter), nameof(GunSetter.ResetWeapons))]
         [HarmonyPostfix]
-        public static void GiveGuns(GunSetter __instance)
+        private static void GiveGuns(GunSetter __instance)
         {
             foreach (Weapon weapon in Guns)
             {
@@ -127,7 +127,7 @@ namespace AtlasLib.Weapons
 
         [HarmonyPatch(typeof(FistControl), nameof(FistControl.ResetFists))]
         [HarmonyPostfix]
-        public static void GiveFists(FistControl __instance)
+        private static void GiveFists(FistControl __instance)
         {
             foreach (Weapon weapon in Fists.OrderBy(fist => fist.Info.Slot))
             {
@@ -144,7 +144,7 @@ namespace AtlasLib.Weapons
 
         [HarmonyPatch(typeof(GameProgressSaver), nameof(GameProgressSaver.CheckGear))]
         [HarmonyPrefix]
-        public static bool CheckGearForCustoms(ref int __result, string gear)
+        private static bool CheckGearForCustoms(ref int __result, string gear)
         {
             foreach (Weapon weapon in Weapons)
             {
@@ -160,7 +160,7 @@ namespace AtlasLib.Weapons
 
         [HarmonyPatch(typeof(GameProgressSaver), nameof(GameProgressSaver.AddGear))]
         [HarmonyPrefix]
-        public static bool AddGearForCustoms(string gear)
+        private static bool AddGearForCustoms(string gear)
         {
             foreach (Weapon weapon in Weapons)
             {

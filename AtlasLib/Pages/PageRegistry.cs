@@ -11,9 +11,9 @@ namespace AtlasLib.Pages
     public static class PageRegistry
     {
         public static int CurrentPage { get; private set; }
-        public static List<Page> Pages { get; private set; } = new();
+        public static List<Page> Pages { get; } = new();
 
-        public static void Initialize()
+        internal static void Initialize()
         {
             Pages.Add(new DefaultWeaponPage());
             Plugin.Harmony.PatchAll(typeof(PageRegistry));
@@ -63,7 +63,7 @@ namespace AtlasLib.Pages
 
         [HarmonyPatch(typeof(ShopZone), nameof(ShopZone.Start))]
         [HarmonyPostfix]
-        public static void ShopStart(ShopZone __instance)
+        private static void ShopStart(ShopZone __instance)
         {
             if (__instance.gameObject.GetChild("Canvas")?.GetChild("Weapons") != null)
             {
@@ -106,7 +106,7 @@ namespace AtlasLib.Pages
 
         [HarmonyPatch(typeof(ShopZone), nameof(ShopZone.TurnOn))]
         [HarmonyPostfix]
-        public static void RefreshOnEntrance()
+        private static void RefreshOnEntrance()
         {
             RefreshPages(0);
         }
