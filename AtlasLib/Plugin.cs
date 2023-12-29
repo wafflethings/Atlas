@@ -1,7 +1,11 @@
-﻿using BepInEx;
+﻿using System;
+using BepInEx;
 using HarmonyLib;
 using AtlasLib.Pages;
+using AtlasLib.Style;
+using AtlasLib.Utils;
 using AtlasLib.Weapons;
+using UnityEngine.SceneManagement;
 
 namespace AtlasLib
 {
@@ -13,13 +17,22 @@ namespace AtlasLib
         public const string Version = "2.0.0";
         public static readonly Harmony Harmony = new(GUID);
 
-        public void Start()
+        private void Start()
         {
             PageRegistry.Initialize();
             WeaponRegistry.Initialize();
+            StyleRegistry.Initialize();
+
+            SceneManager.sceneLoaded += (scene, mode) =>
+            {
+                if (PatchThis.HasntPatched)
+                {
+                    PatchThis.PatchAll();
+                }
+            };
         }
 
-        public void OnDestroy()
+        private void OnDestroy()
         {
             WeaponRegistry.SaveData();
         }

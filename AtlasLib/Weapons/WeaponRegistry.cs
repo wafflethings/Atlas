@@ -146,11 +146,14 @@ namespace AtlasLib.Weapons
         [HarmonyPrefix]
         private static bool CheckGearForCustoms(ref int __result, string gear)
         {
+            Debug.Log("Check gear :3 " + gear);
             foreach (Weapon weapon in Weapons)
             {
-                if (weapon.Info.Id == gear)
+                if (weapon.Info?.Id == gear)
                 {
+                    Debug.Log($"ownership for |{weapon.Info?.Id}|");
                     __result = WeaponOwnership["weapon." + weapon.Info.Id];
+                    Debug.Log("we did it reddit!");
                     return false;
                 }
             }

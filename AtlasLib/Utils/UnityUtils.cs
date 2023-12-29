@@ -7,7 +7,7 @@ namespace AtlasLib.Utils
     {
         public static GameObject GetChild(this GameObject from, string name)
         {
-            return from.transform.Find(name).gameObject;
+            return from.transform.Find(name)?.gameObject ?? null;
         }
 
         public static List<GameObject> FindSceneObjects(string sceneName)

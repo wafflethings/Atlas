@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using AtlasLib.Utils;
 using HarmonyLib;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
@@ -13,6 +14,9 @@ namespace AtlasLib.Pages
         public static int CurrentPage { get; private set; }
         public static List<Page> Pages { get; } = new();
 
+        private static GameObject _leftScrollButton;
+        private static GameObject _rightScrollButton;
+        
         internal static void Initialize()
         {
             Pages.Add(new DefaultWeaponPage());
@@ -33,6 +37,13 @@ namespace AtlasLib.Pages
 
         public static void RefreshPages(int changedBy)
         {
+            if (Pages.Count == 0)
+            {
+                _leftScrollButton.SetActive(false);
+                _leftScrollButton.SetActive(true);
+                return;
+            }
+            
             Pages[CurrentPage].EnablePage();
 
             if (changedBy != 0)
@@ -74,21 +85,21 @@ namespace AtlasLib.Pages
                 templateShopButton.toActivate = Array.Empty<GameObject>();
                 templateShopButton.toDeactivate = Array.Empty<GameObject>();
 
-                GameObject leftScrollButton = Object.Instantiate(templateButton, templateButton.transform.parent);
-                RectTransform leftRect = leftScrollButton.GetComponent<RectTransform>();
+                _leftScrollButton = Object.Instantiate(templateButton, templateButton.transform.parent);
+                RectTransform leftRect = _leftScrollButton.GetComponent<RectTransform>();
                 leftRect.sizeDelta -= new Vector2(leftRect.sizeDelta.x / 2, 0);
-                leftScrollButton.transform.localPosition = new Vector3(-220, -145, -45);
+                _leftScrollButton.transform.localPosition = new Vector3(-220, -145, -45);
 
-                GameObject rightScrollButton = Object.Instantiate(leftScrollButton, templateButton.transform.parent);
-                rightScrollButton.transform.localPosition = new Vector3(-140, -145, -45);
+                _rightScrollButton = Object.Instantiate(_leftScrollButton, templateButton.transform.parent);
+                _rightScrollButton.transform.localPosition = new Vector3(-140, -145, -45);
 
-                leftScrollButton.GetComponentInChildren<Text>().text = "<<";
-                leftScrollButton.GetComponent<RectTransform>().SetAsFirstSibling();
-                leftScrollButton.GetComponentInChildren<Button>().onClick.AddListener(() => ButtonScroll(true));
+                _leftScrollButton.GetComponentInChildren<TMP_Text>().text = "<<";
+                _leftScrollButton.GetComponent<RectTransform>().SetAsFirstSibling();
+                _leftScrollButton.GetComponentInChildren<Button>().onClick.AddListener(() => ButtonScroll(true));
 
-                rightScrollButton.GetComponentInChildren<Text>().text = ">>";
-                rightScrollButton.GetComponent<RectTransform>().SetAsFirstSibling();
-                rightScrollButton.GetComponentInChildren<Button>().onClick.AddListener(() => ButtonScroll(false));
+                _rightScrollButton.GetComponentInChildren<TMP_Text>().text = ">>";
+                _rightScrollButton.GetComponent<RectTransform>().SetAsFirstSibling();
+                _rightScrollButton.GetComponentInChildren<Button>().onClick.AddListener(() => ButtonScroll(false));
 
                 CurrentPage = 0;
 
