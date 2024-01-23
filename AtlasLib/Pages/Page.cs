@@ -5,18 +5,20 @@ namespace AtlasLib.Pages
 {
     public abstract class Page
     {
-        public List<GameObject> Objects = new();
+        protected List<GameObject> Objects = new();
+        private Dictionary<GameObject, bool> _state = new();
 
         public virtual void CreatePage(Transform parent)
         {
             Objects.Clear();
+            _state.Clear();
         }
 
         public virtual void EnablePage()
         {
             foreach (GameObject pageObject in Objects)
             {
-                pageObject.SetActive(true);
+                pageObject.SetActive(_state[pageObject]);
             }
         }
         
@@ -24,6 +26,7 @@ namespace AtlasLib.Pages
         {
             foreach (GameObject pageObject in Objects)
             {
+                _state[pageObject] = pageObject.activeSelf;
                 pageObject.SetActive(false);
             }
         }

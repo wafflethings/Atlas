@@ -293,6 +293,7 @@
     <Compile Include="Utils\PatchThis.cs" />
     <Compile Include="Utils\PathUtils.cs" />
     <Compile Include="Utils\UnityUtils.cs" />
+    <Compile Include="Weapons\BasicWeapon.cs" />
     <Compile Include="Weapons\WeaponRegistry.cs" />
     <Compile Include="Weapons\Weapon.cs" />
     <Compile Include="Weapons\WeaponInfo.cs" />

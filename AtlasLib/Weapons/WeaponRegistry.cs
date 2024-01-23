@@ -101,6 +101,7 @@ namespace AtlasLib.Weapons
         [HarmonyPostfix]
         private static void GiveGuns(GunSetter __instance)
         {
+            Guns = Guns.OrderBy(gun => gun.Info.OrderInSlot).ToList();
             foreach (Weapon weapon in Guns)
             {
                 if (weapon.Selection != WeaponSelection.Disabled)
@@ -129,7 +130,8 @@ namespace AtlasLib.Weapons
         [HarmonyPostfix]
         private static void GiveFists(FistControl __instance)
         {
-            foreach (Weapon weapon in Fists.OrderBy(fist => fist.Info.Slot))
+            Fists = Fists.OrderBy(gun => gun.Info.OrderInSlot).ToList();
+            foreach (Weapon weapon in Fists)
             {
                 if (weapon.Selection != WeaponSelection.Disabled && weapon.Owned)
                 {
@@ -146,14 +148,11 @@ namespace AtlasLib.Weapons
         [HarmonyPrefix]
         private static bool CheckGearForCustoms(ref int __result, string gear)
         {
-            Debug.Log("Check gear :3 " + gear);
             foreach (Weapon weapon in Weapons)
             {
                 if (weapon.Info?.Id == gear)
                 {
-                    Debug.Log($"ownership for |{weapon.Info?.Id}|");
                     __result = WeaponOwnership["weapon." + weapon.Info.Id];
-                    Debug.Log("we did it reddit!");
                     return false;
                 }
             }
