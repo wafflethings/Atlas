@@ -1,9 +1,8 @@
-﻿namespace AtlasLib.Weapons
+﻿namespace AtlasLib.Weapons;
+
+public enum WeaponSelection
 {
-    public enum WeaponSelection
-    {
-        Disabled = 0,
-        Standard = 1,
-        Alternate = 2
-    }
+    Disabled = 0,
+    Standard = 1,
+    Alternate = 2
 }

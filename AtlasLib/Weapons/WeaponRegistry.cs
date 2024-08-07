@@ -6,174 +6,164 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using AtlasLib.Saving;
 using AtlasLib.Weapons;
 using AtlasLib.Utils;
 using UnityEngine;
 
-namespace AtlasLib.Weapons
+namespace AtlasLib.Weapons;
+
+[HarmonyPatch]
+public static class WeaponRegistry
 {
-    public static class WeaponRegistry
+    private static string s_savePath = Path.Combine(PathUtils.ModPath(), "save{0}");
+    private static readonly SaveFile<Dictionary<int, Dictionary<string, int>>> s_weaponOwnership = SaveFile.RegisterFile(new SaveFile<Dictionary<int, Dictionary<string, int>>>("weapons_owned.json"));
+    private static readonly List<Weapon> Weapons = new();
+    private static List<Weapon> s_guns = new();
+    private static List<Weapon> s_fists = new();
+    
+    public static bool CheckOwnership(string id)
     {
-        private static string CurrentSave => string.Format(SavePath, GameProgressSaver.currentSlot);
-        private static string SavePath = Path.Combine(PathUtils.ModPath(), "save{0}");
-        private static Dictionary<string, int> WeaponOwnership = new();
-        public static List<Weapon> Weapons = new();
-        public static List<Weapon> Guns = new();
-        public static List<Weapon> Fists = new();
-
-        internal static void Initialize()
+        if (id.StartsWith("weapon."))
         {
-            Plugin.Harmony.PatchAll(typeof(WeaponRegistry));
-            LoadData();
+            throw new Exception("Id starts with 'weapon.'. Don't do that, it gets added automatically");
         }
 
-        public static void LoadData()
-        {
-            WeaponOwnership.Clear();
-
-            if (File.Exists(CurrentSave))
-            {
-                foreach (string line in File.ReadLines(CurrentSave))
-                {
-                    string[] data = line.Split('~');
-                    WeaponOwnership.Add(data[0], int.Parse(data[1]));
-                }
-            }
-        }
-
-        public static void SaveData()
-        {
-            using (StreamWriter sw = File.CreateText(CurrentSave))
-            {
-                foreach (KeyValuePair<string, int> ownershipPair in WeaponOwnership)
-                {
-                    sw.WriteLine($"{ownershipPair.Key}~{ownershipPair.Value}");
-                }
-            }
-        }
-
-        public static bool CheckOwnership(string id)
-        {
-            if (id.StartsWith("weapon."))
-            {
-                throw new Exception("Id starts with 'weapon.'. Don't do that, it gets added automatically");
-            }
-
-            id = "weapon." + id;
+        id = "weapon." + id;
             
-            if (!WeaponOwnership.ContainsKey(id))
+        if (!CurrentOwnershipDict.ContainsKey(id))
+        {
+            CurrentOwnershipDict.Add(id, 0);
+        }
+
+        return CurrentOwnershipDict[id] == 1;
+    }
+
+    public static void RegisterGun(Weapon weapon)
+    {
+        if (weapon.Info.WeaponType == WeaponType.Gun)
+        {
+            s_guns.Add(weapon);
+        }
+        else
+        {
+            s_fists.Add(weapon);
+        }
+
+        Weapons.Add(weapon);
+    }
+
+    public static void RegisterGuns(Weapon[] weapons)
+    {
+        foreach (Weapon weapon in weapons)
+        {
+            RegisterGun(weapon);
+        }
+    }
+
+    private static void EnsureDictExistsForSlot()
+    {
+        if (s_weaponOwnership.Data.ContainsKey(GameProgressSaver.currentSlot))
+        {
+            return;
+        }
+        
+        s_weaponOwnership.Data.Add(GameProgressSaver.currentSlot, new());
+    }
+
+    private static Dictionary<string, int> CurrentOwnershipDict
+    {
+        get
+        {
+            EnsureDictExistsForSlot();
+            return s_weaponOwnership.Data[GameProgressSaver.currentSlot];
+        }
+    }
+
+    [HarmonyPatch(typeof(GunSetter), nameof(GunSetter.ResetWeapons))]
+    [HarmonyPostfix]
+    private static void GiveGuns(GunSetter __instance)
+    {
+        s_guns = s_guns.OrderBy(gun => gun.Info.OrderInSlot).ToList();
+        foreach (Weapon weapon in s_guns)
+        {
+            if (weapon.Selection == WeaponSelection.Disabled)
             {
-                WeaponOwnership.Add(id, 0);
+                continue;
+            }
+            
+            // i would LOVE to use GunControl.slots, but gunsetter.resetweapons is called in start, before gc.start.
+            // this means that slots isnt set before this runs initially.
+
+            List<List<GameObject>> slots = new()
+            {
+                __instance.gunc.slot1,
+                __instance.gunc.slot2,
+                __instance.gunc.slot3,
+                __instance.gunc.slot4,
+                __instance.gunc.slot5,
+                __instance.gunc.slot6
+            };
+
+            GameObject created = weapon.Create(__instance.transform);
+            slots[weapon.Info.Slot].Add(created);
+            created.SetActive(false);
+        }
+    }
+
+    [HarmonyPatch(typeof(FistControl), nameof(FistControl.ResetFists))]
+    [HarmonyPostfix]
+    private static void GiveFists(FistControl __instance)
+    {
+        s_fists = s_fists.OrderBy(gun => gun.Info.OrderInSlot).ToList();
+        foreach (Weapon weapon in s_fists)
+        {
+            if (weapon.Selection == WeaponSelection.Disabled || !weapon.Owned)
+            {
+                return;
             }
 
-            return WeaponOwnership[id] == 1;
-        }
+            GameObject created = weapon.Create(__instance.transform);
+            created.SetActive(false);
 
-        public static void Register(Weapon weapon)
+            FistControl.Instance.spawnedArms.Add(created);
+            FistControl.Instance.spawnedArmNums.Add(weapon.Info.Slot);
+        }
+    }
+
+    [HarmonyPatch(typeof(GameProgressSaver), nameof(GameProgressSaver.CheckGear))]
+    [HarmonyPrefix]
+    private static bool CheckGearForCustoms(ref int __result, string gear)
+    {
+        foreach (Weapon weapon in Weapons)
         {
-            if (weapon.Info.WeaponType == WeaponType.Gun)
+            if (weapon.Info?.Id != gear)
             {
-                Guns.Add(weapon);
+                continue;
             }
-            else
+            
+            __result = CurrentOwnershipDict["weapon." + weapon.Info.Id];
+            return false;
+        }
+
+        return true;
+    }
+
+    [HarmonyPatch(typeof(GameProgressSaver), nameof(GameProgressSaver.AddGear))]
+    [HarmonyPrefix]
+    private static bool AddGearForCustoms(string gear)
+    {
+        foreach (Weapon weapon in Weapons)
+        {
+            if (weapon.Info.Id != gear)
             {
-                Fists.Add(weapon);
-            }
-
-            Weapons.Add(weapon);
-        }
-
-        [HarmonyPatch(typeof(GameProgressSaver), nameof(GameProgressSaver.SetSlot))]
-        [HarmonyPrefix]
-        private static void SaveOnSlotChange()
-        {
-            SaveData();
-        }
-
-        [HarmonyPatch(typeof(GameProgressSaver), nameof(GameProgressSaver.SetSlot))]
-        [HarmonyPostfix]
-        private static void LoadOnSlotChange()
-        {
-            LoadData();
-        }
-
-        [HarmonyPatch(typeof(GunSetter), nameof(GunSetter.ResetWeapons))]
-        [HarmonyPostfix]
-        private static void GiveGuns(GunSetter __instance)
-        {
-            Guns = Guns.OrderBy(gun => gun.Info.OrderInSlot).ToList();
-            foreach (Weapon weapon in Guns)
-            {
-                if (weapon.Selection != WeaponSelection.Disabled)
-                {
-                    // i would LOVE to use GunControl.slots, but gunsetter.resetweapons is called in start, before gc.start.
-                    // this means that slots isnt set before this runs initially.
-
-                    List<List<GameObject>> slots = new()
-                    {
-                        __instance.gunc.slot1,
-                        __instance.gunc.slot2,
-                        __instance.gunc.slot3,
-                        __instance.gunc.slot4,
-                        __instance.gunc.slot5,
-                        __instance.gunc.slot6
-                    };
-                    
-                    GameObject created = weapon.Create(__instance.transform);
-                    slots[weapon.Info.Slot].Add(created);
-                    created.SetActive(false);
-                }
-            }
-        }
-
-        [HarmonyPatch(typeof(FistControl), nameof(FistControl.ResetFists))]
-        [HarmonyPostfix]
-        private static void GiveFists(FistControl __instance)
-        {
-            Fists = Fists.OrderBy(gun => gun.Info.OrderInSlot).ToList();
-            foreach (Weapon weapon in Fists)
-            {
-                if (weapon.Selection != WeaponSelection.Disabled && weapon.Owned)
-                {
-                    GameObject created = weapon.Create(__instance.transform);
-                    created.SetActive(false);
-
-                    FistControl.Instance.spawnedArms.Add(created);
-                    FistControl.Instance.spawnedArmNums.Add(weapon.Info.Slot);
-                }
-            }
-        }
-
-        [HarmonyPatch(typeof(GameProgressSaver), nameof(GameProgressSaver.CheckGear))]
-        [HarmonyPrefix]
-        private static bool CheckGearForCustoms(ref int __result, string gear)
-        {
-            foreach (Weapon weapon in Weapons)
-            {
-                if (weapon.Info?.Id == gear)
-                {
-                    __result = WeaponOwnership["weapon." + weapon.Info.Id];
-                    return false;
-                }
+                continue;
             }
 
-            return true;
+            CurrentOwnershipDict["weapon." + weapon.Info.Id] = 1;
+            return false;
         }
-
-        [HarmonyPatch(typeof(GameProgressSaver), nameof(GameProgressSaver.AddGear))]
-        [HarmonyPrefix]
-        private static bool AddGearForCustoms(string gear)
-        {
-            foreach (Weapon weapon in Weapons)
-            {
-                if (weapon.Info.Id == gear)
-                {
-                    WeaponOwnership["weapon." + weapon.Info.Id] = 1;
-                    return false;
-                }
-            }
-
-            return true;
-        }
+        
+        return true;
     }
 }

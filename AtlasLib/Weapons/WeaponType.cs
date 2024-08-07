@@ -1,8 +1,7 @@
-﻿namespace AtlasLib.Weapons
+﻿namespace AtlasLib.Weapons;
+
+public enum WeaponType
 {
-    public enum WeaponType
-    {
-        Gun,
-        Fist
-    }
+    Gun,
+    Fist
 }

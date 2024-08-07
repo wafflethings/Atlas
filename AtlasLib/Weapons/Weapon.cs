@@ -1,24 +1,23 @@
 ﻿using UnityEngine;
 
-namespace AtlasLib.Weapons
+namespace AtlasLib.Weapons;
+
+public abstract class Weapon
 {
-    public abstract class Weapon
+    public virtual GameObject Create(Transform parent)
     {
-        public virtual GameObject Create(Transform parent)
+        GameObject weapon = Object.Instantiate(Info.WeaponObjects[(int)Selection - 1], parent);
+
+        if (Info.UseFreshness)
         {
-            GameObject weapon = Object.Instantiate(Info.WeaponObjects[(int)Selection - 1], parent);
-
-            if (Info.UseFreshness)
-            {
-                StyleHUD.Instance.weaponFreshness.Add(weapon, 10);
-            }
-
-            return weapon;
+            StyleHUD.Instance.weaponFreshness.Add(weapon, 10);
         }
-        
-        public abstract WeaponInfo Info { get; }
-        
-        public virtual WeaponSelection Selection => Owned ? (WeaponSelection)PrefsManager.Instance.GetInt("weapon." + Info.Id) : WeaponSelection.Disabled;
-        public virtual bool Owned => WeaponRegistry.CheckOwnership(Info.Id);
+
+        return weapon;
     }
+
+    public abstract WeaponInfo Info { get; }
+
+    public virtual WeaponSelection Selection => Owned ? (WeaponSelection)PrefsManager.Instance.GetInt("weapon." + Info.Id) : WeaponSelection.Disabled;
+    public virtual bool Owned => WeaponRegistry.CheckOwnership(Info.Id);
 }

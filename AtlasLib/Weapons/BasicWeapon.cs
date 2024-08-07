@@ -1,14 +1,13 @@
-namespace AtlasLib.Weapons
+namespace AtlasLib.Weapons;
+
+public class BasicWeapon : Weapon
 {
-    public class BasicWeapon : Weapon
+    private WeaponInfo _info;
+
+    public BasicWeapon(WeaponInfo info)
     {
-        private WeaponInfo _info;
-
-        public BasicWeapon(WeaponInfo info)
-        {
             _info = info;
-        }
-
-        public override WeaponInfo Info => _info;
     }
+
+    public override WeaponInfo Info => _info;
 }

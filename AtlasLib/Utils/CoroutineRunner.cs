@@ -1,22 +1,21 @@
 ﻿using UnityEngine;
 
-namespace AtlasLib.Utils
+namespace AtlasLib.Utils;
+
+//Empty monobehaviour whos only purpose is to run coroutines lol
+public class CoroutineRunner : MonoBehaviour
 {
-    //Empty monobehaviour whos only purpose is to run coroutines lol
-    public class CoroutineRunner : MonoBehaviour
+    private static CoroutineRunner _instance;
+    public static CoroutineRunner Instance
     {
-        private static CoroutineRunner _instance;
-        public static CoroutineRunner Instance
+        get
         {
-            get
+            if(_instance == null)
             {
-                if(_instance == null)
-                {
-                    _instance = new GameObject("WW Coroutines").AddComponent<CoroutineRunner>();
-                    DontDestroyOnLoad(_instance.gameObject);
-                }
-                return _instance;
+                _instance = new GameObject("AtlasLib Coroutines").AddComponent<CoroutineRunner>();
+                DontDestroyOnLoad(_instance.gameObject);
             }
+            return _instance;
         }
     }
 }

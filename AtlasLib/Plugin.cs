@@ -1,40 +1,25 @@
-﻿using System;
-using BepInEx;
+﻿using BepInEx;
 using HarmonyLib;
 using AtlasLib.Pages;
-using AtlasLib.Style;
-using AtlasLib.Utils;
-using AtlasLib.Weapons;
-using UnityEngine.SceneManagement;
+using AtlasLib.Saving;
 
-namespace AtlasLib
+namespace AtlasLib;
+
+[BepInPlugin(Guid, Name, Version)]
+public class Plugin : BaseUnityPlugin
 {
-    [BepInPlugin(GUID, Name, Version)]
-    public class Plugin : BaseUnityPlugin
+    public const string Guid = "wafflethings.atlaslib";
+    private const string Name = "AtlasLib";
+    private const string Version = "3.0.1";
+
+    private void Start()
     {
-        public const string GUID = "waffle.ultrakill.atlas";
-        public const string Name = "AtlasLib";
-        public const string Version = "2.0.0";
-        public static readonly Harmony Harmony = new(GUID);
+        PageRegistry.Initialize();
+        new Harmony(Guid).PatchAll();
+    }
 
-        private void Start()
-        {
-            PageRegistry.Initialize();
-            WeaponRegistry.Initialize();
-            StyleRegistry.Initialize();
-
-            SceneManager.sceneLoaded += (scene, mode) =>
-            {
-                if (PatchThis.HasntPatched)
-                {
-                    PatchThis.PatchAll();
-                }
-            };
-        }
-
-        private void OnDestroy()
-        {
-            WeaponRegistry.SaveData();
-        }
+    private void OnDestroy()
+    {
+        SaveFile.SaveAll();
     }
 }
