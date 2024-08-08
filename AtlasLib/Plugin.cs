@@ -10,11 +10,10 @@ public class Plugin : BaseUnityPlugin
 {
     public const string Guid = "wafflethings.atlaslib";
     private const string Name = "AtlasLib";
-    private const string Version = "3.0.1";
+    private const string Version = "3.0.2";
 
     private void Start()
     {
-        PageRegistry.Initialize();
         new Harmony(Guid).PatchAll();
     }
 
