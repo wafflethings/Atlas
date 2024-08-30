@@ -28,8 +28,8 @@ public static class PageRegistry
             s_pages.Insert(at, page);
         }
     }
-
-    public static void RegisterPages(Page[] pages)
+    
+    public static void RegisterPages(IEnumerable<Page> pages)
     {
         foreach (Page page in pages)
         {

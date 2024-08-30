@@ -16,9 +16,8 @@ namespace AtlasLib.Weapons;
 [HarmonyPatch]
 public static class WeaponRegistry
 {
-    private static string s_savePath = Path.Combine(PathUtils.ModPath(), "save{0}");
+    public static readonly List<Weapon> Weapons = new();
     private static readonly SaveFile<Dictionary<int, Dictionary<string, int>>> s_weaponOwnership = SaveFile.RegisterFile(new SaveFile<Dictionary<int, Dictionary<string, int>>>("weapons_owned.json"));
-    private static readonly List<Weapon> Weapons = new();
     private static List<Weapon> s_guns = new();
     private static List<Weapon> s_fists = new();
     
@@ -39,7 +38,7 @@ public static class WeaponRegistry
         return CurrentOwnershipDict[id] == 1;
     }
 
-    public static void RegisterGun(Weapon weapon)
+    public static void RegisterWeapon(Weapon weapon)
     {
         if (weapon.Info.WeaponType == WeaponType.Gun)
         {
@@ -53,11 +52,11 @@ public static class WeaponRegistry
         Weapons.Add(weapon);
     }
 
-    public static void RegisterGuns(Weapon[] weapons)
+    public static void RegisterWeapons(IEnumerable<Weapon> weapons)
     {
         foreach (Weapon weapon in weapons)
         {
-            RegisterGun(weapon);
+            RegisterWeapon(weapon);
         }
     }
 

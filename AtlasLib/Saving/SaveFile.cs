@@ -40,7 +40,7 @@ public class SaveFile<T> : SaveFile where T : new()
             return;
         }
 
-        Data = Deserialize(File.ReadAllText(_folder));
+        Data = Deserialize(File.ReadAllText(FilePath));
     }
 
     protected override void SaveData()
