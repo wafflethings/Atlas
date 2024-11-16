@@ -1,6 +1,5 @@
 ﻿using BepInEx;
 using HarmonyLib;
-using AtlasLib.Pages;
 using AtlasLib.Saving;
 
 namespace AtlasLib;
@@ -10,7 +9,7 @@ public class Plugin : BaseUnityPlugin
 {
     public const string Guid = "wafflethings.atlaslib";
     private const string Name = "AtlasLib";
-    private const string Version = "3.0.5";
+    private const string Version = "3.0.6";
 
     private void Start()
     {

@@ -40,7 +40,14 @@ public class SaveFile<T> : SaveFile where T : new()
             return;
         }
 
-        Data = Deserialize(File.ReadAllText(FilePath));
+        try
+        {
+            Data = Deserialize(File.ReadAllText(FilePath));
+        }
+        catch (JsonSerializationException)
+        {
+            Data = default(T);
+        }
     }
 
     protected override void SaveData()
