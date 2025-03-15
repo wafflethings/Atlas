@@ -9,7 +9,7 @@ public class Plugin : BaseUnityPlugin
 {
     public const string Guid = "wafflethings.atlaslib";
     private const string Name = "AtlasLib";
-    private const string Version = "3.0.6";
+    private const string Version = "3.0.8";
 
     private void Start()
     {

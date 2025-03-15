@@ -5,7 +5,7 @@ namespace AtlasLib.Utils;
 //Empty monobehaviour whos only purpose is to run coroutines lol
 public class CoroutineRunner : MonoBehaviour
 {
-    private static CoroutineRunner _instance;
+    private static CoroutineRunner? _instance;
     public static CoroutineRunner Instance
     {
         get

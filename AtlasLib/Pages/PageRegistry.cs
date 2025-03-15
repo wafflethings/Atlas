@@ -14,8 +14,8 @@ public static class PageRegistry
 {
     private static int s_currentPage;
     private static readonly List<Page> s_pages = new() { new DefaultWeaponPage() };
-    private static GameObject s_leftScrollButton;
-    private static GameObject s_rightScrollButton;
+    private static GameObject? s_leftScrollButton;
+    private static GameObject? s_rightScrollButton;
 
     public static void RegisterPage(Page page, int at = -1)
     {
@@ -78,46 +78,49 @@ public static class PageRegistry
     [HarmonyPostfix]
     private static void ShopStart(ShopZone __instance)
     {
-        if (__instance.gameObject.GetChild("Canvas")?.GetChild("Weapons") != null)
+        GameObject? weaponPanel = __instance.GetComponentInChildren<ShopGearChecker>(true)?.gameObject;
+
+        // If this is NOT true, it's a yellow shop (e.g: not a testament)
+        if (weaponPanel == null)
         {
-            // If this is true, it's a yellow shop (e.g: not a testament)
-
-            GameObject backButton = __instance.gameObject.GetChild("Canvas/Weapons/BackButton (1)");
-            GameObject templateButton = Object.Instantiate(backButton, backButton.transform.parent);
-            ShopButton templateShopButton = templateButton.GetComponent<ShopButton>();
-            templateShopButton.toActivate = Array.Empty<GameObject>();
-            templateShopButton.toDeactivate = Array.Empty<GameObject>();
-
-            s_leftScrollButton = Object.Instantiate(templateButton, templateButton.transform.parent);
-            RectTransform leftRect = s_leftScrollButton.GetComponent<RectTransform>();
-            leftRect.sizeDelta -= new Vector2(leftRect.sizeDelta.x / 2, 0);
-            s_leftScrollButton.transform.localPosition = new Vector3(-220, -145, -45);
-
-            s_rightScrollButton = Object.Instantiate(s_leftScrollButton, templateButton.transform.parent);
-            s_rightScrollButton.transform.localPosition = new Vector3(-140, -145, -45);
-
-            s_leftScrollButton.GetComponentInChildren<TMP_Text>().text = "<<";
-            s_leftScrollButton.GetComponent<RectTransform>().SetAsFirstSibling();
-            s_leftScrollButton.GetComponentInChildren<Button>().onClick.AddListener(() => ButtonScroll(true));
-
-            s_rightScrollButton.GetComponentInChildren<TMP_Text>().text = ">>";
-            s_rightScrollButton.GetComponent<RectTransform>().SetAsFirstSibling();
-            s_rightScrollButton.GetComponentInChildren<Button>().onClick.AddListener(() => ButtonScroll(false));
-
-            s_currentPage = 0;
-
-            foreach (Page page in s_pages)
-            {
-                page.CreatePage(__instance.gameObject.GetChild("Canvas/Weapons").transform);
-
-                if (page.GetType() != typeof(DefaultWeaponPage))
-                {
-                    page.DisablePage();
-                }
-            }
-                
-            Object.Destroy(templateButton);
+            return;
         }
+
+        GameObject? backButton = weaponPanel.GetChild("Weapons Panel/Buttons/BackButton");
+        GameObject? templateButton = Object.Instantiate(backButton, backButton.transform.parent);
+        ShopButton templateShopButton = templateButton.GetComponent<ShopButton>();
+        templateShopButton.toActivate = [];
+        templateShopButton.toDeactivate = [];
+
+        s_leftScrollButton = Object.Instantiate(templateButton, templateButton.transform.parent);
+        RectTransform leftRect = s_leftScrollButton.GetComponent<RectTransform>();
+        leftRect.sizeDelta -= new Vector2(leftRect.sizeDelta.x / 2, 0);
+        s_leftScrollButton.transform.localPosition = new Vector3(-220, -145, -45);
+
+        s_rightScrollButton = Object.Instantiate(s_leftScrollButton, templateButton.transform.parent);
+        s_rightScrollButton.transform.localPosition = new Vector3(-140, -145, -45);
+
+        s_leftScrollButton.GetComponentInChildren<TMP_Text>().text = "<<";
+        s_leftScrollButton.GetComponent<RectTransform>().SetAsFirstSibling();
+        s_leftScrollButton.GetComponentInChildren<Button>().onClick.AddListener(() => ButtonScroll(true));
+
+        s_rightScrollButton.GetComponentInChildren<TMP_Text>().text = ">>";
+        s_rightScrollButton.GetComponent<RectTransform>().SetAsFirstSibling();
+        s_rightScrollButton.GetComponentInChildren<Button>().onClick.AddListener(() => ButtonScroll(false));
+
+        s_currentPage = 0;
+
+        foreach (Page page in s_pages)
+        {
+            page.CreatePage(weaponPanel.transform);
+
+            if (page.GetType() != typeof(DefaultWeaponPage))
+            {
+                page.DisablePage();
+            }
+        }
+
+        Object.Destroy(templateButton);
     }
 
     [HarmonyPatch(typeof(ShopZone), nameof(ShopZone.TurnOn))]

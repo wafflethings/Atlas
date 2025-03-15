@@ -17,7 +17,7 @@ namespace AtlasLib.Weapons;
 public static class WeaponRegistry
 {
     public static readonly List<Weapon> Weapons = new();
-    private static readonly SaveFile<Dictionary<int, Dictionary<string, int>>> s_weaponOwnership = SaveFile.RegisterFile(new SaveFile<Dictionary<int, Dictionary<string, int>>>("weapons_owned.json"));
+    private static readonly SaveFile<Dictionary<int, Dictionary<string, int>>> s_weaponOwnership = SaveFile.RegisterFile(new SaveFile<Dictionary<int, Dictionary<string, int>>>("weapons_owned.json", default));
     private static List<Weapon> s_guns = new();
     private static List<Weapon> s_fists = new();
     

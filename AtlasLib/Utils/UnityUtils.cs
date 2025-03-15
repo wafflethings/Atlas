@@ -5,7 +5,7 @@ namespace AtlasLib.Utils;
 
 public static class UnityUtils
 {
-    public static GameObject GetChild(this GameObject from, string name)
+    public static GameObject? GetChild(this GameObject from, string name)
     {
         return from.transform.Find(name)?.gameObject ?? null;
     }

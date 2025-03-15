@@ -12,11 +12,13 @@ public class SaveFile<T> : SaveFile where T : new()
 {
     public T Data;
     private string DefaultPath => Path.Combine("wafflethings", "AtlasLib");
+    private T _defaultValue;
 
-    internal SaveFile(string fileName) : base(fileName)
+    internal SaveFile(string fileName, T defaultValue) : base(fileName)
     {
         Data = new T();
         _folder = DefaultPath;
+        _defaultValue = defaultValue;
     }
 
     /// <summary>
@@ -24,19 +26,24 @@ public class SaveFile<T> : SaveFile where T : new()
     /// </summary>
     /// <param name="fileName">The name of the file, e.g. settings.json</param>
     /// <param name="folder">The subfolder this is in of AppData/Roaming, e.g. Path.Combine("wafflethings", "AtlasLib")</param>
-    public SaveFile(string fileName, string folder) : base(fileName)
+    public SaveFile(string fileName, string folder, T defaultValue) : base(fileName)
     {
         Data = new T();
         _folder = folder;
+        _defaultValue = defaultValue;
     }
 
     protected virtual string Serialize(T value) => JsonConvert.SerializeObject(value);
-    protected virtual T Deserialize(string value) => JsonConvert.DeserializeObject<T>(value);
+    protected virtual T Deserialize(string value) => JsonConvert.DeserializeObject<T>(value, new JsonSerializerSettings()
+    {
+        DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate
+    });
 
     protected override void LoadData()
     {
         if (!File.Exists(FilePath))
         {
+            Data = _defaultValue;
             return;
         }
 
@@ -46,7 +53,7 @@ public class SaveFile<T> : SaveFile where T : new()
         }
         catch (JsonSerializationException)
         {
-            Data = default(T);
+            Data = _defaultValue;
         }
     }
 
