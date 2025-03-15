@@ -42,7 +42,7 @@ public static class PageRegistry
         if (s_pages.Count == 0)
         {
             s_leftScrollButton.SetActive(false);
-            s_leftScrollButton.SetActive(true);
+            s_rightScrollButton.SetActive(false);
             return;
         }
             
@@ -51,6 +51,16 @@ public static class PageRegistry
         if (changedBy != 0)
         {
             s_pages[s_currentPage - changedBy].DisablePage();
+        }
+
+        if (s_currentPage == 0)
+        {
+            s_leftScrollButton.GetComponent<Button>().interactable = false;
+        }
+
+        if (s_currentPage == s_pages.Count - 1)
+        {
+            s_rightScrollButton.GetComponent<Button>().interactable = false;
         }
     }
 
@@ -87,18 +97,18 @@ public static class PageRegistry
         }
 
         GameObject? backButton = weaponPanel.GetChild("Weapons Panel/Buttons/BackButton");
+        backButton.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 87.5f); // normally 187.5 - each button is 45 with 5 padding
         GameObject? templateButton = Object.Instantiate(backButton, backButton.transform.parent);
         ShopButton templateShopButton = templateButton.GetComponent<ShopButton>();
         templateShopButton.toActivate = [];
         templateShopButton.toDeactivate = [];
+        RectTransform templateRect = templateButton.GetComponent<RectTransform>();
+        templateRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 45f);
 
         s_leftScrollButton = Object.Instantiate(templateButton, templateButton.transform.parent);
-        RectTransform leftRect = s_leftScrollButton.GetComponent<RectTransform>();
-        leftRect.sizeDelta -= new Vector2(leftRect.sizeDelta.x / 2, 0);
-        s_leftScrollButton.transform.localPosition = new Vector3(-220, -145, -45);
-
+        s_leftScrollButton.transform.localPosition += new Vector3(-71.25f, 0, 0);
         s_rightScrollButton = Object.Instantiate(s_leftScrollButton, templateButton.transform.parent);
-        s_rightScrollButton.transform.localPosition = new Vector3(-140, -145, -45);
+        s_rightScrollButton.transform.localPosition += new Vector3(71.25f, 0, 0);
 
         s_leftScrollButton.GetComponentInChildren<TMP_Text>().text = "<<";
         s_leftScrollButton.GetComponent<RectTransform>().SetAsFirstSibling();
