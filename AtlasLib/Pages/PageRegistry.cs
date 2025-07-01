@@ -16,6 +16,7 @@ public static class PageRegistry
     private static readonly List<Page> s_pages = new() { new DefaultWeaponPage() };
     private static GameObject? s_leftScrollButton;
     private static GameObject? s_rightScrollButton;
+    private static GameObject s_pageButtonHolder;
 
     public static void RegisterPage(Page page, int at = -1)
     {
@@ -45,23 +46,17 @@ public static class PageRegistry
             s_rightScrollButton.SetActive(false);
             return;
         }
-            
-        s_pages[s_currentPage].EnablePage();
+
+        Page page = s_pages[s_currentPage];
+        page.EnablePage();
 
         if (changedBy != 0)
         {
             s_pages[s_currentPage - changedBy].DisablePage();
         }
-
-        if (s_currentPage == 0)
-        {
-            s_leftScrollButton.GetComponent<Button>().interactable = false;
-        }
-
-        if (s_currentPage == s_pages.Count - 1)
-        {
-            s_rightScrollButton.GetComponent<Button>().interactable = false;
-        }
+        
+        s_leftScrollButton.GetComponent<Button>().interactable = s_currentPage != 0;
+        s_rightScrollButton.GetComponent<Button>().interactable = s_currentPage != s_pages.Count - 1;
     }
 
     public static void ButtonScroll(bool isLeft)
@@ -88,16 +83,20 @@ public static class PageRegistry
     [HarmonyPostfix]
     private static void ShopStart(ShopZone __instance)
     {
-        GameObject? weaponPanel = __instance.GetComponentInChildren<ShopGearChecker>(true)?.gameObject;
+        GameObject? pageHolder = __instance.GetComponentInChildren<ShopGearChecker>(true)?.gameObject;
 
         // If this is NOT true, it's a yellow shop (e.g: not a testament)
-        if (weaponPanel == null)
+        if (pageHolder == null)
         {
             return;
         }
 
-        GameObject? backButton = weaponPanel.GetChild("Weapons Panel/Buttons/BackButton");
+        s_pageButtonHolder = new GameObject();
+        s_pageButtonHolder.transform.parent = pageHolder.transform;
+        
+        GameObject? backButton = pageHolder.GetChild("Weapons Panel/Buttons/BackButton");
         backButton.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 87.5f); // normally 187.5 - each button is 45 with 5 padding
+        
         GameObject? templateButton = Object.Instantiate(backButton, backButton.transform.parent);
         ShopButton templateShopButton = templateButton.GetComponent<ShopButton>();
         templateShopButton.toActivate = [];
@@ -107,29 +106,30 @@ public static class PageRegistry
 
         s_leftScrollButton = Object.Instantiate(templateButton, templateButton.transform.parent);
         s_leftScrollButton.transform.localPosition += new Vector3(-71.25f, 0, 0);
-        s_rightScrollButton = Object.Instantiate(s_leftScrollButton, templateButton.transform.parent);
-        s_rightScrollButton.transform.localPosition += new Vector3(71.25f, 0, 0);
-
         s_leftScrollButton.GetComponentInChildren<TMP_Text>().text = "<<";
-        s_leftScrollButton.GetComponent<RectTransform>().SetAsFirstSibling();
         s_leftScrollButton.GetComponentInChildren<Button>().onClick.AddListener(() => ButtonScroll(true));
-
+        
+        s_rightScrollButton = Object.Instantiate(templateButton, templateButton.transform.parent);
+        s_rightScrollButton.transform.localPosition += new Vector3(71.25f, 0, 0);
         s_rightScrollButton.GetComponentInChildren<TMP_Text>().text = ">>";
-        s_rightScrollButton.GetComponent<RectTransform>().SetAsFirstSibling();
         s_rightScrollButton.GetComponentInChildren<Button>().onClick.AddListener(() => ButtonScroll(false));
 
         s_currentPage = 0;
 
         foreach (Page page in s_pages)
         {
-            page.CreatePage(weaponPanel.transform);
+            page.CreatePage(pageHolder.transform);
 
             if (page.GetType() != typeof(DefaultWeaponPage))
             {
                 page.DisablePage();
             }
         }
-
+        
+        backButton.transform.parent = s_pageButtonHolder.transform;
+        s_leftScrollButton.transform.parent = s_pageButtonHolder.transform;
+        s_rightScrollButton.transform.parent = s_pageButtonHolder.transform;
+        
         Object.Destroy(templateButton);
     }
 

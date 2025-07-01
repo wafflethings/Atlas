@@ -7,6 +7,8 @@ public abstract class Page
 {
     protected readonly List<GameObject> Objects = new();
     private readonly Dictionary<GameObject, bool> _state = new();
+    
+    public Transform PageButtonHolder { get; protected set; }
 
     public virtual void CreatePage(Transform parent)
     {

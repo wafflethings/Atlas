@@ -83,7 +83,7 @@ public static class WeaponRegistry
     [HarmonyPostfix]
     private static void GiveGuns(GunSetter __instance)
     {
-        s_guns = s_guns.OrderBy(gun => gun.Info.OrderInSlot).ToList();
+        s_guns = s_guns.OrderBy(gun => gun.Info.IndexInSlot).ToList();
         foreach (Weapon weapon in s_guns)
         {
             if (weapon.Selection == WeaponSelection.Disabled)
@@ -104,8 +104,17 @@ public static class WeaponRegistry
                 __instance.gunc.slot6
             };
 
+            List<GameObject> slot = slots[weapon.Info.Slot];
             GameObject created = weapon.Create(__instance.transform);
-            slots[weapon.Info.Slot].Add(created);
+            if (weapon.Info.IndexInSlot > slot.Count)
+            {
+                slot.Add(created);
+            }
+            else
+            {
+                slot.Insert(weapon.Info.IndexInSlot, created);
+            }
+
             created.SetActive(false);
         }
     }
@@ -114,7 +123,7 @@ public static class WeaponRegistry
     [HarmonyPostfix]
     private static void GiveFists(FistControl __instance)
     {
-        s_fists = s_fists.OrderBy(gun => gun.Info.OrderInSlot).ToList();
+        s_fists = s_fists.OrderBy(gun => gun.Info.IndexInSlot).ToList();
         foreach (Weapon weapon in s_fists)
         {
             if (weapon.Selection == WeaponSelection.Disabled || !weapon.Owned)
