@@ -117,6 +117,8 @@ public static class WeaponRegistry
 
             created.SetActive(false);
         }
+
+        __instance.gunc.UpdateWeaponList(); // this already gets called but before postfix and idccccc
     }
 
     [HarmonyPatch(typeof(FistControl), nameof(FistControl.ResetFists))]
